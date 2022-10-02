@@ -10,10 +10,26 @@ class Validation extends StatefulWidget{
   }
 }
 
-class _ValidationState extends State<Validation> {
+const userName = "buddy@gmail.com";
+const passWord = "buddy123";
 
-  final _userName = "buddy@gmail.com";
-  final _passWord = "buddy123";
+String? validateUserName(String? value){
+  if(value!.isEmpty || !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+    return "Wrong Username";
+  }else{
+    return null;
+  }
+}
+
+String? validatePassword(String? value){
+  if(value!.isEmpty || value != passWord){
+    return "Wrong password";
+  }else{
+    return null;
+  }
+}
+
+class _ValidationState extends State<Validation> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -48,11 +64,7 @@ class _ValidationState extends State<Validation> {
                     labelText: "Enter User Name",
                   ),
                   validator: (value){
-                    if(value!.isEmpty || value != _userName) {
-                      return "Wrong username";
-                    }else{
-                      return null;
-                    }
+                    validateUserName(value);
                   },
                 ),
                 TextFormField(
@@ -63,11 +75,7 @@ class _ValidationState extends State<Validation> {
                   autocorrect: false,
                   enableSuggestions: false,
                   validator: (value){
-                    if(value!.isEmpty || value != _passWord){
-                      return "Wrong password";
-                    }else{
-                      return null;
-                    }
+                    validatePassword(value);
                   },
                 ),
                 const SizedBox(height: 15,),
