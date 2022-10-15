@@ -1,5 +1,9 @@
+import 'package:assignmentApp/userclass.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'homePage.dart';
+import 'validate.dart';
+import 'userlist.dart';
 
 class Validation extends StatefulWidget{
   const Validation({super.key});
@@ -11,14 +15,21 @@ class Validation extends StatefulWidget{
 }
 
 class _ValidationState extends State<Validation> {
-
+  final userStoreController = Get.put(UserList());
   final _userName = "buddy@gmail.com";
-  final _passWord = "buddy123";
+  var _passWord = "buddy123";
   final _formKey = GlobalKey<FormState>();
+
+  void initalAdd(){
+    UserMap userMap = UserMap("buddy@gmail.com", "buddy123", "buddy12@gmail.com");
+    userStoreController.userList.add(userMap);
+  }
+
 
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+    initalAdd();
 
     return Scaffold(
       resizeToAvoidBottomInset : false,
@@ -31,7 +42,7 @@ class _ValidationState extends State<Validation> {
               ),
             ),
         ),
-        //backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
       ),
       body: Container(
         padding: const EdgeInsets.only(left:40, right:40),
@@ -48,11 +59,10 @@ class _ValidationState extends State<Validation> {
                     labelText: "Enter User Name",
                   ),
                   validator: (value){
-                    if(value!.isEmpty || value != _userName) {
-                      return "Wrong username";
-                    }else{
+                    if(value!.isEmpty &&
+                        Validate.validateUserName(value, userStoreController)){
                       return null;
-                    }
+                    }return "Incorrect Username";
                   },
                 ),
                 TextFormField(
@@ -63,10 +73,22 @@ class _ValidationState extends State<Validation> {
                   autocorrect: false,
                   enableSuggestions: false,
                   validator: (value){
-                    if(value!.isEmpty || value != _passWord){
-                      return "Wrong password";
-                    }else{
+                    if(value!.isEmpty &&
+                        Validate.validatePassWord(value, userStoreController)){
                       return null;
+                    }return "Incorrect Password";
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: "Confirm Password",
+                  ),
+                  obscureText: true,
+                  autocorrect: false,
+                  enableSuggestions: false,
+                  validator: (value){
+                    if(value != _passWord) {
+                      return "password doesn't match";
                     }
                   },
                 ),
@@ -85,6 +107,22 @@ class _ValidationState extends State<Validation> {
                         }
                       },
                       child: const Text("submit")
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                        onPressed: (){
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(
+                                builder: (context) => const HomePage()
+                                )
+                            );
+                        },
+                        child: const Text("Signup")
                     ),
                   ],
                 )
