@@ -2,22 +2,21 @@ import 'package:assignmentApp/userclass.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'homePage.dart';
+import 'signup_page.dart';
 import 'validate.dart';
 import 'userlist.dart';
 
-class Validation extends StatefulWidget{
-  const Validation({super.key});
+class SigninPage extends StatefulWidget{
+  const SigninPage({super.key});
 
   @override
   State<StatefulWidget> createState() {
-    return _ValidationState();
+    return _SigninState();
   }
 }
 
-class _ValidationState extends State<Validation> {
+class _SigninState extends State<SigninPage> {
   final userStoreController = Get.put(UserList());
-  final _userName = "buddy@gmail.com";
-  var _passWord = "buddy123";
   final _formKey = GlobalKey<FormState>();
 
   void initalAdd(){
@@ -59,7 +58,7 @@ class _ValidationState extends State<Validation> {
                     labelText: "Enter User Name",
                   ),
                   validator: (value){
-                    if(value!.isEmpty &&
+                    if(value!.isNotEmpty &&
                         Validate.validateUserName(value, userStoreController)){
                       return null;
                     }return "Incorrect Username";
@@ -73,23 +72,10 @@ class _ValidationState extends State<Validation> {
                   autocorrect: false,
                   enableSuggestions: false,
                   validator: (value){
-                    if(value!.isEmpty &&
+                    if(value!.isNotEmpty &&
                         Validate.validatePassWord(value, userStoreController)){
                       return null;
                     }return "Incorrect Password";
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: "Confirm Password",
-                  ),
-                  obscureText: true,
-                  autocorrect: false,
-                  enableSuggestions: false,
-                  validator: (value){
-                    if(value != _passWord) {
-                      return "password doesn't match";
-                    }
                   },
                 ),
                 const SizedBox(height: 15,),
@@ -110,7 +96,6 @@ class _ValidationState extends State<Validation> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 15,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -118,7 +103,7 @@ class _ValidationState extends State<Validation> {
                         onPressed: (){
                             Navigator.of(context)
                                 .push(MaterialPageRoute(
-                                builder: (context) => const HomePage()
+                                builder: (context) => const SignUp()
                                 )
                             );
                         },

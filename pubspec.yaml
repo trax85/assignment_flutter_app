@@ -39,6 +39,7 @@ dependencies:
 
   hello:
     path: ../hello/
+  get:
 
 dev_dependencies:
   flutter_test:
