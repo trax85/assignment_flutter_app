@@ -5,10 +5,8 @@ class Validate {
     bool nameValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]"
     r"+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(name);
     if(nameValid){
-      print("Valid");
       return null;
     }else{
-      print("invalid");
       return "Incorrect Username";
     }
   }
