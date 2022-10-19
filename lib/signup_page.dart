@@ -1,5 +1,6 @@
 import 'package:assignmentApp/userclass.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'userlist.dart';
 import 'validate.dart';
@@ -16,6 +17,7 @@ class SignUp extends StatefulWidget{
 class _SignUpState extends State<SignUp> {
   String _passWord = '';
   String _userName = '';
+  //email is currently unimplemented
   String _email = '';
 
   final _formKey = GlobalKey<FormState>();
@@ -25,12 +27,23 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Signup",
-          style: TextStyle(
-          color: Colors.black,
+        title: const Center(
+          child: Text("Signup",
+                  style: TextStyle(
+                  color: Colors.black, fontSize: 30,
+                  ),
           ),
         ),
-        backgroundColor: Colors.white,
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          // Status bar color
+          statusBarColor: Colors.transparent,
+          // Status bar brightness (optional)
+          statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+          statusBarBrightness: Brightness.light, // For iOS (dark icons)
+        ),
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
       body: Container(
         padding: const EdgeInsets.only(left:40, right:40),
