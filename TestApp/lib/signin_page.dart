@@ -1,4 +1,4 @@
-import 'package:assignmentApp/userclass.dart';
+import 'package:testapp/userclass.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'homePage.dart';

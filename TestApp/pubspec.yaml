@@ -1,4 +1,4 @@
-name: assignmentApp
+name: testapp
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -38,7 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   hello:
-    path: ../hello/
+    path: ../../hello/
   get:
 
 dev_dependencies:
