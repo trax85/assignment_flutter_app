@@ -58,6 +58,7 @@ class _SigninState extends State<SigninPage> {
                 const Text("Enter Details", style: TextStyle(fontSize: 30, color: Colors.black),),
                 const SizedBox(height: 20,),
                 TextFormField(
+                  key: const Key('username'),
                   decoration: const InputDecoration(
                     labelText: "Enter User Name",
                   ),
@@ -69,6 +70,7 @@ class _SigninState extends State<SigninPage> {
                   },
                 ),
                 TextFormField(
+                  key: const Key('password'),
                   decoration: const InputDecoration(
                     labelText: "Enter Password",
                   ),
@@ -96,7 +98,8 @@ class _SigninState extends State<SigninPage> {
                           );
                         }
                       },
-                      child: const Text("submit")
+                      child: const Text("Signin"),
+                      key: const Key('signin'),
                     ),
                   ],
                 ),
@@ -111,7 +114,8 @@ class _SigninState extends State<SigninPage> {
                                 )
                             );
                         },
-                        child: const Text("Signup")
+                        child: const Text("Signup"),
+                        key: const Key('signup')
                     ),
                   ],
                 )

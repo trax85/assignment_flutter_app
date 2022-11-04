@@ -40,6 +40,7 @@ dependencies:
   hello:
     path: ../../hello/
   get:
+  mockito: ^5.3.2
 
 dev_dependencies:
   flutter_test:
