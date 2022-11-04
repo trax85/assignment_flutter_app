@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //We use GetMaterialApp instead of MaterialApp to use Getx controllers.
     return const GetMaterialApp(
       home: SigninPage(),
     );

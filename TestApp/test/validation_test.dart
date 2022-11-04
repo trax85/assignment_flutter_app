@@ -6,10 +6,10 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:assignmentApp/validate.dart';
+import 'package:testapp/validate.dart';
 import 'package:get/get.dart';
-import 'package:assignmentApp/userlist.dart';
-import 'package:assignmentApp/userclass.dart';
+import 'package:testapp/userlist.dart';
+import 'package:testapp/userclass.dart';
 
 void main() {
   String uname = "hello@world.com";
