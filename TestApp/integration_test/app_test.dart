@@ -19,7 +19,7 @@ void main(){
   group("end to end testing", () {
     testWidgets('tap on signin button',
             (tester) async {
-      
+
       //Init widgets
       final username = find.byKey(const Key('username'));
       final password = find.byKey(const Key('password'));

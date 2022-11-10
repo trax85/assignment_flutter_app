@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hello/hello.dart';
+import 'package:flutter/foundation.dart'
 
 class HomePage extends StatefulWidget{
   const HomePage({super.key});
@@ -24,6 +25,14 @@ class _HomePageState extends State<HomePage>{
   }
 
   Future<void> initDeviceSate() async {
+
+    if(defaultTargetPlatform != TargetPlatform.android){
+      setState(() {
+        _deviceName = "Platform Not supported";
+      });
+      return;
+    }
+
     String? deviceName;
     try{
       deviceName = await hello.getDeviceName();
